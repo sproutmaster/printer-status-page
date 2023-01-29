@@ -3,6 +3,10 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+require('dotenv').config();
+
+// const compression = require("compression");
+// const helmet = require("helmet");
 
 const app = express();
 
@@ -16,6 +20,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// app.use(helmet());
+// app.use(compression()); // Compress all routes
 
 app.use('/', require('./routes/index'));
 
