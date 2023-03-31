@@ -128,11 +128,29 @@
       populateCard(data);
       populateCard(data2);
       populateCard(data2);
+      viewSettings();
       // let container = document.getElementById("print-status");
       // container.children[0].appendChild();
     } catch (err) {
       console.log(err);
     }
+  }
+
+  function viewSettings(){
+    setView();
+    $("#filter-menu .view-settings input").on("click", setView)
+  }
+
+  function setView(){
+    if(isList()){
+      $("#print-status").addClass("list-view");
+    } else {
+      $("#print-status").removeClass("list-view");
+    }
+  }
+
+  function isList(){
+    return $("#filter-menu .view-settings input").is(':checked');
   }
 
   function populateCard(data){
@@ -297,10 +315,12 @@
 
 
     let progressContainer = document.createElement("div");
+    let kitName = document.createElement("div");
     if(isColor){
       // Cartridges
       progressContainer.classList.add("progress-container");
-      progressContainer.appendChild(document.createTextNode("Cartridges"));
+      kitName.appendChild(document.createTextNode("Cartridges"));
+      progressContainer.appendChild(kitName);
       progressContainer.appendChild(createProgressBar('bg-yellow', false, "yellow-cartridge"));
       progressContainer.appendChild(createProgressBar('bg-magenta', false, "magenta-cartridge"));
       progressContainer.appendChild(createProgressBar('bg-cyan', false, "cyan-cartridge"));
@@ -309,19 +329,25 @@
       // Kits
       progressContainer = document.createElement("div");
       progressContainer.classList.add("progress-container");
-      progressContainer.appendChild(document.createTextNode("Fuser Kit"));
+      kitName = document.createElement("div");
+      kitName.appendChild(document.createTextNode("Fuser Kit"));
+      progressContainer.appendChild(kitName);
       progressContainer.appendChild(createProgressBar('bg-success', false, "fuser-kit"));
       body.appendChild(progressContainer);
       // second kit
       progressContainer = document.createElement("div");
       progressContainer.classList.add("progress-container");
-      progressContainer.appendChild(document.createTextNode("Transfer Kit"));
+      kitName = document.createElement("div");
+      kitName.appendChild(document.createTextNode("Transfer Kit"));
+      progressContainer.appendChild(kitName);
       progressContainer.appendChild(createProgressBar('bg-success', false, "transfer-kit"));
       body.appendChild(progressContainer);
       // Paper trays
       progressContainer = document.createElement("div");
       progressContainer.classList.add("progress-container");
-      progressContainer.appendChild(document.createTextNode("Paper trays"));
+      kitName = document.createElement("div");
+      kitName.appendChild(document.createTextNode("Paper Trays"));
+      progressContainer.appendChild(kitName);
       for(let i = 0; i < 2; i++){
         let currentBar = createProgressBar('test', true, ("paper-tray-" + (i + 1)));
         currentBar.querySelector(".tray-num").appendChild(document.createTextNode(i + 1));
@@ -332,23 +358,30 @@
       // Cartridges
       progressContainer = document.createElement("div");
       progressContainer.classList.add("progress-container");
-      progressContainer.appendChild(document.createTextNode("Cartridge"));
+      kitName = document.createElement("div");
+      kitName.appendChild(document.createTextNode("Cartridge"));
+      progressContainer.appendChild(kitName);
       progressContainer.appendChild(createProgressBar('bg-black', false, "black-cartridge"));
       body.appendChild(progressContainer);
       // Kits
       progressContainer = document.createElement("div");
       progressContainer.classList.add("progress-container");
-      progressContainer.appendChild(document.createTextNode("Maintenance Kit"));
+      kitName = document.createElement("div");
+      kitName.appendChild(document.createTextNode("Maintenance Kit"));
+      progressContainer.appendChild(kitName);
       progressContainer.appendChild(createProgressBar('bg-success', false, "maintenance-kit"));
       body.appendChild(progressContainer);
       // Trays
       progressContainer = document.createElement("div");
       progressContainer.classList.add("progress-container");
-      progressContainer.appendChild(document.createTextNode("Paper trays"));
+      kitName = document.createElement("div");
+      kitName.appendChild(document.createTextNode("Paper trays"));
+      progressContainer.appendChild(kitName);
       for(let i = 0; i < 5; i++){
         let currentBar = createProgressBar('test', true, ("paper-tray-" + (i + 1)));
         currentBar.querySelector(".tray-num").appendChild(document.createTextNode(i + 1));
         progressContainer.appendChild(currentBar);
+        console.log("kek")
       }
       body.appendChild(progressContainer);
     }
