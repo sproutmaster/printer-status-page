@@ -5,7 +5,7 @@
 }
 
 .print-status{
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .print-status .progress{
@@ -26,8 +26,12 @@
 
 .print-status .card{
   width: 300px;
+  min-height: 425px;
   padding: 0;
   margin: 9px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 
@@ -63,8 +67,8 @@ paper-tray.attention .progress-bar{
   border: none !important;
 }
 
-.paper-tray.attention:first-child .progress-bar,
-.paper-tray.attention:first-child .tray-num{
+.paper-tray.attention:nth-child(2) .progress-bar,
+.paper-tray.attention:nth-child(2) .tray-num{
   background: #02b74a;
 }
 
@@ -162,7 +166,7 @@ paper-tray.attention .progress-bar{
   text-transform: Uppercase;
 }
 
-.print-status .paper-tray:first-child .error-msg{
+.print-status .paper-tray:nth-child(2) .error-msg{
   color: #02b74a;
 }
 
@@ -186,4 +190,85 @@ paper-tray.attention .progress-bar{
 
 .print-status .card-footer p{
   margin-bottom: 5px;
+}
+
+#filter-menu{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 20px;
+}
+
+#filter-menu .view-settings{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#filter-menu img{
+  margin-top: 5px;
+}
+
+#filter-menu img:first-child{
+  height: 22px;
+  margin-right: 11px;
+}
+#filter-menu img:last-child{
+  height: 30px;
+}
+
+
+.accordion-button.collapsed {
+  color: #fff;
+}
+
+.accordion-button img {
+  width: 20px;
+  height: 20px;
+}
+
+
+
+
+/* --------------- List view --------------- */
+
+.print-status.list-view .container{
+  flex-direction: column;
+}
+
+.print-status.list-view .card{
+  width: 100%;
+  min-height: auto;
+}
+
+.print-status.list-view .card-main-block{
+  display: flex;
+
+}
+
+.print-status.list-view .card-header{
+  border-radius: 0;
+  width: 20%;
+  height: auto;
+}
+
+.print-status.list-view .card-body{
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.print-status.list-view .progress-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.print-status.list-view .progress{
+  width: 80px;
+  border-radius: 0;
+}
+
+.print-status.list-view .progress .progress-bar{
+  border-radius: 0;
 }
